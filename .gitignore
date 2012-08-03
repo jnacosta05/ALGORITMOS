@@ -1,15 +1,30 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
-
-node_modules
-npm-debug.log
+# este es un comentario
+# Autor: FCA
+#en Python a si se define a una función o procedimiento
+def suma (n1,n2):
+suma=n1+n2
+return suma
+def resta (n1,n2):
+resta= n1-n2
+return resta
+def producto (n1, n2):
+producto= n1*n2
+return producto
+def division(n1,n2):
+division= n1/n2
+return division
+#programa principal
+print 'OPERACIONES BÁSICAS'
+print 'Introduce dos números'
+#introducir datos desde teclado
+num1=float(raw_input('Primero:'))
+num2=float(raw_input('Segundo:'))
+res1= suma(num1,num2)
+res2= resta(num1,num2)
+res3= producto(num1,num2)
+res4= division(num1,num2)
+#imprimir resultados
+print'Los números %f y %f nos da una\n suma=%f\nresta=%f\nproducto=%f\n y
+división=%f\n'%(num1,num2,res1,res2,res3,res4)
+print'Fin'
+ 
