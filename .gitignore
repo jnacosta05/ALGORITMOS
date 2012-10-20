@@ -1,30 +1,108 @@
-# este es un comentario
-# Autor: FCA
-#en Python a si se define a una función o procedimiento
-def suma (n1,n2):
-suma=n1+n2
-return suma
-def resta (n1,n2):
-resta= n1-n2
-return resta
-def producto (n1, n2):
-producto= n1*n2
-return producto
-def division(n1,n2):
-division= n1/n2
-return division
-#programa principal
-print 'OPERACIONES BÁSICAS'
-print 'Introduce dos números'
-#introducir datos desde teclado
-num1=float(raw_input('Primero:'))
-num2=float(raw_input('Segundo:'))
-res1= suma(num1,num2)
-res2= resta(num1,num2)
-res3= producto(num1,num2)
-res4= division(num1,num2)
-#imprimir resultados
-print'Los números %f y %f nos da una\n suma=%f\nresta=%f\nproducto=%f\n y
-división=%f\n'%(num1,num2,res1,res2,res3,res4)
-print'Fin'
+""" USO DE COUNTING SORT """
+
+import time
+
+def countingSort(A, k):
+
+  """ USO DE COUNTING SORT """
+	B = [0 for el in A]
+	C = [0 for el in xrange(0, k+1)]
  
+	for i in xrange(0, k +1):
+		C[i] = 0
+ 
+	for j in xrange(0, len(A)):
+		C[A[j]] += 1
+ 
+	for i in xrange(1, k + 1):
+		C[i] += C[i - 1]
+ 
+	for j in xrange(len(A)-1, 0 - 1, -1):
+		tmp = A[j]
+		tmp2= C[tmp] -1
+		B[tmp2] = tmp
+		C[tmp] -= 1
+	return B
+ 
+inicio=time.time()
+print countingSort([6,0,2,0,1,3,4,6,1,3,2], 6)
+fin=time.time()
+print "Tiempo : ",(fin-inicio)
+
+
+
+""" USO DE HEAPSORT"""
+
+import time
+
+def HeapSort(A):
+    def heapify(A):
+        start = (len(A) - 2) / 2
+        while start >= 0:
+            siftDown(A, start, len(A) - 1)
+            start -= 1
+
+    def siftDown(A, start, end):
+        root = start
+        while root * 2 + 1 <= end:
+            child = root * 2 + 1
+            if child + 1 <= end and A[child] < A[child + 1]:
+                child += 1
+            if child <= end and A[root] < A[child]:
+                A[root], A[child] = A[child], A[root]
+                root = child
+            else:
+                return
+
+    heapify(A)
+    end = len(A) - 1
+    while end > 0:
+        A[end], A[0] = A[0], A[end]
+        siftDown(A, 0, end - 1)
+        end -= 1
+    
+T = [13, 14, 94, 33, 82, 25, 59, 94, 65, 23, 45, 27, 73, 25, 39, 10] 
+inicio=time.time()
+HeapSort(T)
+fin=time.time()
+print T
+print "Tiempo : ",(fin-inicio)
+
+
+""" USO DE QUICKSORT"""
+
+
+import time
+
+def partition(A,p,q):
+  x=A[p]
+	i=p
+	for j in range(p+1,q):
+		if A[j]<=x:
+			i=i+1
+			aux=A[i]
+			A[i]=A[j]
+			A[j]=aux
+	aux=A[p]
+	A[p]=A[i]
+	A[i]=aux
+	return i;
+
+def quicksort(A,p,r):
+	if p<r:
+		q=partition(A,p,r);
+		quicksort(A,p,q-1);
+		quicksort(A,q+1,r);
+A=[3,4,6,2,10,9,8,7,6,5,4,3,2,1,8]
+
+inicio=time.time()
+quicksort(A,0,4)
+fin=time.time()
+print(A)
+print "tiempo :",(fin-inicio)
+
+
+
+
+
+
